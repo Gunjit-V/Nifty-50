@@ -1,0 +1,58 @@
+Project Plan: Nifty 50 Data Pipeline (Shoonya API +
+PostgreSQL)
+
+This document serves as a detailed project plan and can be used as a prompt for a coding agent.
+The project aims to fetch Nifty 50 tick data and 1-minute OHLC data using the Shoonya API, store it
+efficiently in PostgreSQL, and build a robust pipeline with error handling and automation.
+
+Tools & Tech
+• Python for API integration, data handling, logging
+• Shoonya API for market data
+• PostgreSQL as database (free, reliable, supports time-series)
+• SQLAlchemy / psycopg2 for DB integration
+• Pandas for data transformations
+• Logging (Python logging) for monitoring
+• Cron (Linux) for job scheduling
+• Optional: TimescaleDB extension for time-series optimization, Docker for packaging
+
+Repository Setup (Day 1-2)
+• Initialize GitHub repository (private/public)
+• Create project structure with src/, config/, tests/, README.md, .gitignore
+• Use virtualenv/conda for environment management
+• Setup config.yaml and secrets.env (ignored in Git) for API keys
+• Commit and push initial setup
+Week 1: Shoonya API Integration
+• Install Shoonya API client or use HTTP requests
+• Implement authentication with API key/token
+• Fetch tick and 1-min OHLC data for NIFTY index
+• Save raw JSON/CSV locally for validation
+• Commit working API client module
+Week 2: Database Setup
+• Install PostgreSQL on Linux
+• Design schema: ticks table and ohlc_1min table
+• Implement db_manager.py for connections and inserts
+• Batch insert data for efficiency
+• Test queries for data retrieval
+• Commit schema + ingestion scripts
+Week 3: Pipeline + Failure Handling
+• Implement pipeline.py with continuous tick fetcher and scheduled OHLC fetcher
+• Add logging and retry mechanisms (exponential backoff)
+• Schedule tasks with cron
+• Handle missing data and backfill
+• Test pipeline under failure scenarios
+• Commit automated pipeline with error handling
+Week 4: Testing, Optimization & Documentation
+• Write unit tests for DB insertions and API mock calls
+• Optimize inserts (COPY, batch writes)
+• Add utility functions to load data into pandas for ML
+• Explore TimescaleDB for optimization
+• Write detailed README with setup steps and usage
+• Package project (requirements.txt, Docker optional)
+• Commit stable pipeline v1.0
+
+Deliverables
+• Python project with modular code (API client, DB manager, pipeline, utils)
+• PostgreSQL DB with clean schema for Nifty 50 tick + OHLC data
+• Automated pipeline with error handling, logging, retry
+• Utility functions for ML-ready data extraction
+• Documentation for setup and usage

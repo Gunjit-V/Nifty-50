@@ -1,0 +1,26 @@
+api:
+  base_url: "https://api.shoonya.com/NorenWClient"
+  retry:
+    max_attempts: 3
+    initial_delay: 1
+    max_delay: 60
+    backoff_factor: 2
+
+database:
+  host: localhost
+  port: 5432
+  database: nifty_data
+  username: ${DB_USER}
+  password: ${DB_PASSWORD}
+
+data:
+  symbols:
+    - "NIFTY50"
+  intervals:
+    - "1min"
+  batch_size: 1000
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/nifty_pipeline.log
