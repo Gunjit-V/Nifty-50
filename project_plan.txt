@@ -19,7 +19,7 @@ Repository Setup (Day 1-2)
 • Initialize GitHub repository (private/public)
 • Create project structure with src/, config/, tests/, README.md, .gitignore
 • Use virtualenv/conda for environment management
-• Setup config.yaml and secrets.env (ignored in Git) for API keys
+• Setup secrets.env (ignored in Git) for API keys and DB settings (single source)
 • Commit and push initial setup
 Week 1: Shoonya API Integration
 • Install Shoonya API client or use HTTP requests

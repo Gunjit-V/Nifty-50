@@ -26,11 +26,24 @@ A robust data pipeline for fetching and storing NIFTY 50 tick and OHLC data usin
 4. Configure PostgreSQL:
    - Install PostgreSQL
    - Create database and user
-   - Update config/config.yaml with credentials
 
-5. Set up environment variables:
-   - Copy `secrets.env.example` to `secrets.env`
-   - Add your Shoonya API credentials
+5. Set up environment variables (single source of truth):
+   - Copy `secrets.env` (or `secrets.env.example` if present) and fill in values
+   - Include Shoonya API credentials and DB settings:
+     ```env
+     SHOONYA_USER_ID=...
+     SHOONYA_PASSWORD=...
+     SHOONYA_TOTP_KEY=...
+     SHOONYA_VENDOR_CODE=...
+     SHOONYA_API_KEY=...
+     SHOONYA_IMEI=...
+
+     DB_HOST=localhost
+     DB_PORT=5432
+     DB_NAME=nifty_data
+     DB_USER=...
+     DB_PASSWORD=...
+     ```
 
 ## Project Structure
 
@@ -41,7 +54,7 @@ nifty/
 │   ├── db/           # Database operations
 │   ├── pipeline/     # Data pipeline logic
 │   └── utils/        # Helper functions
-├── config/           # Configuration files
+├── config/           # (Optional) Additional configs
 ├── tests/            # Unit tests
 ├── logs/             # Log files
 └── requirements.txt  # Python dependencies
